@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GEPPO – ゲーム実況まとめ</title>
+<title>GEPPO – Game Let's Play Archive</title>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -646,15 +646,56 @@
     .channel-cta { flex-direction: column; text-align: center; padding: 20px; }
     .cta-text { text-align: center; }
   }
+
+  /* LANG SWITCHER */
+  .lang-switcher {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 2px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .lang-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 5px 14px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .lang-btn.active {
+    background: var(--text);
+    color: #fff;
+  }
+  .lang-btn:hover:not(.active) {
+    background: var(--surface2);
+    color: var(--text);
+  }
 </style>
 </head>
 <body>
 
+<!-- LANG SWITCHER -->
+<div class="lang-switcher">
+  <button class="lang-btn active" onclick="setLang('ja')">JA</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
 <!-- HERO -->
 <header class="hero">
-  <span class="hero-label">YOUTUBE GAMING CHANNEL</span>
+  <span class="hero-label" data-ja="YOUTUBE GAMING CHANNEL" data-en="YOUTUBE GAMING CHANNEL">YOUTUBE GAMING CHANNEL</span>
   <h1 class="hero-title">GEPPO</h1>
-  <p class="hero-sub">道宏齋藤 ／ ゲーム実況まとめ</p>
+  <p class="hero-sub" data-ja="道宏齋藤 ／ ゲーム実況まとめ" data-en="Michihiro Saito / Game Let's Play Archive">道宏齋藤 ／ ゲーム実況まとめ</p>
   <div class="hero-divider"></div>
   <div class="stats-bar">
     <div class="stat">
@@ -679,8 +720,8 @@
     </svg>
     <div class="cta-text">
       <span class="cta-label">YOUTUBE CHANNEL</span>
-      <span class="cta-name">GEPPO チャンネルへ</span>
-      <span class="cta-sub">道宏齋藤 ／ 全59本の実況動画を配信中</span>
+      <span class="cta-name" data-ja="GEPPO チャンネルへ" data-en="Visit GEPPO Channel">GEPPO チャンネルへ</span>
+      <span class="cta-sub" data-ja="道宏齋藤 ／ 全59本の実況動画を配信中" data-en="Michihiro Saito / 59 gaming videos and counting">道宏齋藤 ／ 全59本の実況動画を配信中</span>
     </div>
     <span class="cta-arrow">›</span>
   </a>
@@ -689,18 +730,18 @@
 <!-- PROFILE SECTION -->
 <section class="profile-section">
   <div class="profile-inner">
-    <span class="profile-section-label">CASTERS</span>
+    <span class="profile-section-label" data-ja="CASTERS" data-en="CASTERS">CASTERS</span>
     <div class="profile-grid">
 
       <div class="profile-card">
         <div class="profile-avatar tsukiho"><img src="geppo.png" alt="月歩"></div>
         <div class="profile-body">
-          <span class="profile-name">月歩</span>
-          <p class="profile-bio">何の変哲もないサラリーマン。休日はゲームかバイクで英気を養う。</p>
+          <span class="profile-name" data-ja="月歩" data-en="Geppo">月歩</span>
+          <p class="profile-bio" data-ja="何の変哲もないサラリーマン。休日はゲームかバイクで英気を養う。" data-en="A perfectly ordinary salaryman. Recharges on weekends with games and motorcycle rides.">何の変哲もないサラリーマン。休日はゲームかバイクで英気を養う。</p>
           <div class="profile-tags">
-            <span class="profile-tag">🎮 ゲーム</span>
-            <span class="profile-tag">🏍️ バイク</span>
-            <span class="profile-tag">💼 会社員</span>
+            <span class="profile-tag" data-ja="🎮 ゲーム" data-en="🎮 Gaming">🎮 ゲーム</span>
+            <span class="profile-tag" data-ja="🏍️ バイク" data-en="🏍️ Motorcycles">🏍️ バイク</span>
+            <span class="profile-tag" data-ja="💼 会社員" data-en="💼 Office Worker">💼 会社員</span>
           </div>
         </div>
       </div>
@@ -708,12 +749,12 @@
       <div class="profile-card">
         <div class="profile-avatar leon"><img src="rion.png" alt="リオン"></div>
         <div class="profile-body">
-          <span class="profile-name">リオン</span>
-          <p class="profile-bio">なぜか時間がたくさんある自営業の友人。趣味はゲーム一択、ついでにハンバーガー屋巡りも。</p>
+          <span class="profile-name" data-ja="リオン" data-en="Lion">リオン</span>
+          <p class="profile-bio" data-ja="なぜか時間がたくさんある自営業の友人。趣味はゲーム一択、ついでにハンバーガーも。" data-en="A self-employed friend who somehow always has free time. Gaming is his one true hobby — plus the occasional burger hunt.">なぜか時間がたくさんある自営業の友人。趣味はゲーム一択、ついでにハンバーガー屋巡りも。</p>
           <div class="profile-tags">
-            <span class="profile-tag">🎮 ゲーム</span>
-            <span class="profile-tag">🍔 バーガー巡り</span>
-            <span class="profile-tag">🏢 自営業</span>
+            <span class="profile-tag" data-ja="🎮 ゲーム" data-en="🎮 Gaming">🎮 ゲーム</span>
+            <span class="profile-tag" data-ja="🍔 バーガー巡り" data-en="🍔 Burger Hopping">🍔 バーガー巡り</span>
+            <span class="profile-tag" data-ja="🏢 自営業" data-en="🏢 Self-Employed">🏢 自営業</span>
           </div>
         </div>
       </div>
@@ -729,10 +770,10 @@
     <div class="section-header">
       <span class="genre-tag">RPG</span>
       <h2 class="section-title">DRAGON QUEST Ⅶ Reimagined</h2>
-      <span class="completed-badge">完結済み</span>
+      <span class="completed-badge" data-ja="完結済み" data-en="COMPLETED">完結済み</span>
       <div class="section-meta">
-        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-7VsKV2K4aWxitngMj0hbpG" target="_blank">▶ 再生リスト</a>
-        <span>27本 ／ 259回視聴</span>
+        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-7VsKV2K4aWxitngMj0hbpG" target="_blank" data-ja="▶ 再生リスト" data-en="▶ Playlist">▶ 再生リスト</a>
+        <span data-ja="27本 ／ 259回視聴" data-en="27 videos / 259 views">27本 ／ 259回視聴</span>
       </div>
       <div class="section-thumb" style="--genre-color: var(--rpg)">
         <a href="https://www.youtube.com/watch?v=7JWjFKHUQOk" target="_blank" title="最多再生：DRAGON QUESTⅦ part9（27回視聴）">
@@ -744,8 +785,8 @@
     </div>
 
     <div class="highlight-card" style="--genre-color: var(--rpg)">
-      <div class="highlight-title">🎮 このシリーズの見どころ</div>
-      <div class="highlight-text">
+      <div class="highlight-title" data-ja="🎮 このシリーズの見どころ" data-en="🎮 Series Highlights">🎮 このシリーズの見どころ</div>
+      <div class="highlight-text" data-ja="シリーズ最長のボリュームを誇るDQ7を全27回にわたって完走！石版集めや石版世界の謎解きをじっくり楽しむ丁寧なプレイが魅力。人気動画はpart9・part12・part17など中盤の盛り上がりどころが特に高視聴。最終回（part27）も完結まで見届けられる全力プレイが光るシリーズ。" data-en="A complete 27-part run of the longest Dragon Quest title! Meticulous stone slab hunting and puzzle-solving are the highlights. Parts 9, 12, and 17 are fan favorites. The finale in part27 delivers a satisfying end to the journey.">
         シリーズ最長のボリュームを誇るDQ7を全27回にわたって完走！
         石版集めや石版世界の謎解きをじっくり楽しむ丁寧なプレイが魅力。
         人気動画はpart9・part12・part17など中盤の盛り上がりどころが特に高視聴。
@@ -757,20 +798,20 @@
       <a class="video-card" href="https://www.youtube.com/watch?v=VhkRkFJt8E4&list=PLyprGxiQyq-7VsKV2K4aWxitngMj0hbpG" target="_blank" style="--genre-color: var(--rpg)">
         <span class="video-num">01</span>
         <div class="video-info">
-          <div class="video-title">DRAGON QUESTⅦ part1</div>
-          <div class="video-duration">1:44:54 ／ 16回視聴</div>
+          <div class="video-title">DRAGON QUEST Ⅶ part1</div>
+          <div class="video-duration" data-ja="1:44:54 ／ 16回視聴" data-en="1:44:54 / 16 views">1:44:54 ／ 16回視聴</div>
         </div>
         <span class="video-arrow">›</span>
-        <span class="popular-badge">人気</span>
+        <span class="popular-badge" data-ja="人気" data-en="Popular">人気</span>
       </a>
       <a class="video-card" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-7VsKV2K4aWxitngMj0hbpG&index=12" target="_blank" style="--genre-color: var(--rpg)">
         <span class="video-num">12</span>
         <div class="video-info">
-          <div class="video-title">DRAGON QUESTⅦ part12</div>
-          <div class="video-duration">2:08:27 ／ 25回視聴</div>
+          <div class="video-title">DRAGON QUEST Ⅶ part12</div>
+          <div class="video-duration" data-ja="2:08:27 ／ 25回視聴" data-en="2:08:27 / 25 views">2:08:27 ／ 25回視聴</div>
         </div>
         <span class="video-arrow">›</span>
-        <span class="popular-badge">人気</span>
+        <span class="popular-badge" data-ja="人気" data-en="Popular">人気</span>
       </a>
       <a class="video-card" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-7VsKV2K4aWxitngMj0hbpG&index=14" target="_blank" style="--genre-color: var(--rpg)">
         <span class="video-num">14</span>
@@ -791,7 +832,7 @@
       <a class="video-card" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-7VsKV2K4aWxitngMj0hbpG&index=27" target="_blank" style="--genre-color: var(--rpg)">
         <span class="video-num">27</span>
         <div class="video-info">
-          <div class="video-title">DRAGON QUESTⅦ part27（最終回）</div>
+          <div class="video-title" data-ja="DRAGON QUESTⅦ part27（最終回）" data-en="DRAGON QUEST Ⅶ part27 (Final)">DRAGON QUESTⅦ part27（最終回）</div>
           <div class="video-duration">2:05:32 ／ 14回視聴</div>
         </div>
         <span class="video-arrow">›</span>
@@ -804,10 +845,10 @@
     <div class="section-header">
       <span class="genre-tag">ACTION</span>
       <h2 class="section-title">GOD EATER 3</h2>
-      <span class="completed-badge">完結済み</span>
+      <span class="completed-badge" data-ja="完結済み" data-en="COMPLETED">完結済み</span>
       <div class="section-meta">
-        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-41W5K5Mi69CQbaF8lDwMbv" target="_blank">▶ 再生リスト</a>
-        <span>15本 ／ 39回視聴</span>
+        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-41W5K5Mi69CQbaF8lDwMbv" target="_blank" data-ja="▶ 再生リスト" data-en="▶ Playlist">▶ 再生リスト</a>
+        <span data-ja="15本 ／ 39回視聴" data-en="15 videos / 39 views">15本 ／ 39回視聴</span>
       </div>
       <div class="section-thumb" style="--genre-color: var(--action)">
         <a href="https://www.youtube.com/watch?v=u03Qg1BH7zw" target="_blank" title="最多再生：GOD EATER3 part4（9回視聴）">
@@ -819,8 +860,8 @@
     </div>
 
     <div class="highlight-card" style="--genre-color: var(--action)">
-      <div class="highlight-title">🎮 このシリーズの見どころ</div>
-      <div class="highlight-text">
+      <div class="highlight-title" data-ja="🎮 このシリーズの見どころ" data-en="🎮 Series Highlights">🎮 このシリーズの見どころ</div>
+      <div class="highlight-text" data-ja="怒涛のアクションと濃密なストーリーを全15回で完走！神機使いとしてアラガミと戦うハンティングアクションを丁寧に攻略。特にpart4（9回視聴）やpart6（5回視聴）は人気が高く、ストーリーの核心に迫る展開が見どころ。最終回のpart15で感動のフィナーレ。" data-en="A full 15-part run packed with intense action and a gripping story! Hunting Aragami as an Oracle Cell user is the core gameplay. Parts 4 and 6 are fan favorites. The emotional finale arrives in part15.">
         怒涛のアクションと濃密なストーリーを全15回で完走！
         神機使いとしてアラガミと戦うハンティングアクションを丁寧に攻略。
         特にpart4（9回視聴）やpart6（5回視聴）は人気が高く、
@@ -844,7 +885,7 @@
           <div class="video-duration">1:44:02 ／ 9回視聴</div>
         </div>
         <span class="video-arrow">›</span>
-        <span class="popular-badge">人気</span>
+        <span class="popular-badge" data-ja="人気" data-en="Popular">人気</span>
       </a>
       <a class="video-card" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-41W5K5Mi69CQbaF8lDwMbv&index=6" target="_blank" style="--genre-color: var(--action)">
         <span class="video-num">06</span>
@@ -857,7 +898,7 @@
       <a class="video-card" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-41W5K5Mi69CQbaF8lDwMbv&index=15" target="_blank" style="--genre-color: var(--action)">
         <span class="video-num">15</span>
         <div class="video-info">
-          <div class="video-title">GOD EATER3 part15（最終回）</div>
+          <div class="video-title" data-ja="GOD EATER3 part15（最終回）" data-en="GOD EATER 3 part15 (Final)">GOD EATER3 part15（最終回）</div>
           <div class="video-duration">1:09:54</div>
         </div>
         <span class="video-arrow">›</span>
@@ -871,8 +912,8 @@
       <span class="genre-tag">JRPG</span>
       <h2 class="section-title">Tales of Vesperia</h2>
       <div class="section-meta">
-        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-5vuM-VD1v2a6tlErTiyEND" target="_blank">▶ 再生リスト</a>
-        <span>9本 ／ 47回視聴（配信中）</span>
+        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-5vuM-VD1v2a6tlErTiyEND" target="_blank" data-ja="▶ 再生リスト" data-en="▶ Playlist">▶ 再生リスト</a>
+        <span data-ja="9本 ／ 47回視聴（配信中）" data-en="9 videos / 47 views (ongoing)">9本 ／ 47回視聴（配信中）</span>
       </div>
       <div class="section-thumb" style="--genre-color: var(--accent2)">
         <a href="https://www.youtube.com/watch?v=epSlqZHm6zg" target="_blank" title="最多再生：Tales of Vesperia part7（16回視聴）">
@@ -884,8 +925,8 @@
     </div>
 
     <div class="highlight-card" style="--genre-color: var(--accent2)">
-      <div class="highlight-title">🎮 このシリーズの見どころ</div>
-      <div class="highlight-text">
+      <div class="highlight-title" data-ja="🎮 このシリーズの見どころ" data-en="🎮 Series Highlights">🎮 このシリーズの見どころ</div>
+      <div class="highlight-text" data-ja="現在進行中のテイルズシリーズ最新実況！人気JRPGのヴェスペリアをpart1から丁寧にプレイ中。part2・part3の初期展開からpart7（16回視聴）の盛り上がりまで見どころ満載。まだ追いかけられる絶好のタイミング——今すぐpart1から始めよう！" data-en="An ongoing playthrough of the beloved Tales of Vesperia! Careful play from part1 all the way through part7 (top view count). Now is the perfect time to catch up — start from part1!">
         現在進行中のテイルズシリーズ最新実況！
         人気JRPGのヴェスペリアをpart1から丁寧にプレイ中。
         part2・part3の初期展開からpart7（16回視聴）の盛り上がりまで見どころ満載。
@@ -909,12 +950,12 @@
           <div class="video-duration">1:28:56 ／ 16回視聴</div>
         </div>
         <span class="video-arrow">›</span>
-        <span class="popular-badge">人気</span>
+        <span class="popular-badge" data-ja="人気" data-en="Popular">人気</span>
       </a>
       <a class="video-card" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-5vuM-VD1v2a6tlErTiyEND&index=1" target="_blank" style="--genre-color: var(--accent2)">
         <span class="video-num">09</span>
         <div class="video-info">
-          <div class="video-title">Tales of Vesperia part9（最新）</div>
+          <div class="video-title" data-ja="Tales of Vesperia part9（最新）" data-en="Tales of Vesperia part9 (Latest)">Tales of Vesperia part9（最新）</div>
           <div class="video-duration">2:30:12 ／ 5回視聴</div>
         </div>
         <span class="video-arrow">›</span>
@@ -926,10 +967,10 @@
   <section class="game-section" style="--genre-color: var(--mmo)">
     <div class="section-header">
       <span class="genre-tag">MMO</span>
-      <h2 class="section-title">ラグナロクオンライン</h2>
+      <h2 class="section-title" data-ja="ラグナロクオンライン" data-en="Ragnarok Online">ラグナロクオンライン</h2>
       <div class="section-meta">
-        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-6VY4rwARSRtXkb7_DCUKgb" target="_blank">▶ 再生リスト</a>
-        <span>7本 ／ 配信中</span>
+        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-6VY4rwARSRtXkb7_DCUKgb" target="_blank" data-ja="▶ 再生リスト" data-en="▶ Playlist">▶ 再生リスト</a>
+        <span data-ja="7本 ／ 配信中" data-en="7 videos (ongoing)">7本 ／ 配信中</span>
       </div>
       <div class="section-thumb" style="--genre-color: var(--mmo)">
         <a href="https://www.youtube.com/watch?v=CzYcjT59vi8" target="_blank" title="最多再生：RO散歩（17回視聴）">
@@ -941,8 +982,8 @@
     </div>
 
     <div class="highlight-card" style="--genre-color: var(--mmo)">
-      <div class="highlight-title">🎮 このシリーズの見どころ</div>
-      <div class="highlight-text">
+      <div class="highlight-title" data-ja="🎮 このシリーズの見どころ" data-en="🎮 Series Highlights">🎮 このシリーズの見どころ</div>
+      <div class="highlight-text" data-ja="伝説のMMORPG「ラグナロクオンライン」本鯖を散歩しながらのんびり探索！「RO散歩」シリーズから始まり、最新「本鯖散歩」まで全7本を配信中。初回「RO散歩」は17回視聴と最も人気で、MMO懐かしさを感じる必見の一本。ゆったりした雰囲気の癒し系実況スタイルが心地よい。" data-en="A laid-back stroll through the legendary MMORPG Ragnarok Online! From the 'RO Walk' series to the latest 'Main Server Walk', 7 episodes available. The first episode leads with 17 views — a must-watch for any MMO fan. Relaxing and nostalgic commentary style throughout.">
         伝説のMMORPG「ラグナロクオンライン」本鯖を散歩しながらのんびり探索！
         「RO散歩」シリーズから始まり、最新「本鯖散歩」まで全7本を配信中。
         初回「RO散歩」は17回視聴と最も人気で、MMO懐かしさを感じる必見の一本。
@@ -954,16 +995,16 @@
       <a class="video-card" href="https://www.youtube.com/watch?v=CzYcjT59vi8&list=PLyprGxiQyq-6VY4rwARSRtXkb7_DCUKgb" target="_blank" style="--genre-color: var(--mmo)">
         <span class="video-num">01</span>
         <div class="video-info">
-          <div class="video-title">RO散歩</div>
+          <div class="video-title" data-ja="RO散歩" data-en="RO Walk">RO散歩</div>
           <div class="video-duration">1:36:03 ／ 17回視聴</div>
         </div>
         <span class="video-arrow">›</span>
-        <span class="popular-badge">人気</span>
+        <span class="popular-badge" data-ja="人気" data-en="Popular">人気</span>
       </a>
       <a class="video-card" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-6VY4rwARSRtXkb7_DCUKgb&index=2" target="_blank" style="--genre-color: var(--mmo)">
         <span class="video-num">02</span>
         <div class="video-info">
-          <div class="video-title">RO散歩2</div>
+          <div class="video-title" data-ja="RO散歩2" data-en="RO Walk 2">RO散歩2</div>
           <div class="video-duration">1:08:23 ／ 4回視聴</div>
         </div>
         <span class="video-arrow">›</span>
@@ -971,7 +1012,7 @@
       <a class="video-card" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-6VY4rwARSRtXkb7_DCUKgb&index=4" target="_blank" style="--genre-color: var(--mmo)">
         <span class="video-num">04</span>
         <div class="video-info">
-          <div class="video-title">本鯖散歩1</div>
+          <div class="video-title" data-ja="本鯖散歩1" data-en="Main Server Walk 1">本鯖散歩1</div>
           <div class="video-duration">3:50:36</div>
         </div>
         <span class="video-arrow">›</span>
@@ -979,7 +1020,7 @@
       <a class="video-card" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-6VY4rwARSRtXkb7_DCUKgb&index=7" target="_blank" style="--genre-color: var(--mmo)">
         <span class="video-num">07</span>
         <div class="video-info">
-          <div class="video-title">本鯖散歩4（最新）</div>
+          <div class="video-title" data-ja="本鯖散歩4（最新）" data-en="Main Server Walk 4 (Latest)">本鯖散歩4（最新）</div>
           <div class="video-duration">1:59:13 ／ 2回視聴</div>
         </div>
         <span class="video-arrow">›</span>
@@ -991,10 +1032,10 @@
   <section class="game-section" style="--genre-color: var(--indie)">
     <div class="section-header">
       <span class="genre-tag">INDIE</span>
-      <h2 class="section-title">デヴィエーションゲーム</h2>
+      <h2 class="section-title" data-ja="デヴィエーションゲーム" data-en="Deviation Game">デヴィエーションゲーム</h2>
       <div class="section-meta">
-        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-713ayQDZU_dZlUDjZpSK1k" target="_blank">▶ 再生リスト</a>
-        <span>1本 ／ 4回視聴</span>
+        <a class="playlist-btn" href="https://www.youtube.com/playlist?list=PLyprGxiQyq-713ayQDZU_dZlUDjZpSK1k" target="_blank" data-ja="▶ 再生リスト" data-en="▶ Playlist">▶ 再生リスト</a>
+        <span data-ja="1本 ／ 4回視聴" data-en="1 video / 4 views">1本 ／ 4回視聴</span>
       </div>
       <div class="section-thumb" style="--genre-color: var(--indie)">
         <a href="https://www.youtube.com/watch?v=JO8sGbwmaN4" target="_blank" title="デヴィエーションゲーム Part1（4回視聴）">
@@ -1006,8 +1047,8 @@
     </div>
 
     <div class="highlight-card" style="--genre-color: var(--indie)">
-      <div class="highlight-title">🎮 このシリーズの見どころ</div>
-      <div class="highlight-text">
+      <div class="highlight-title" data-ja="🎮 このシリーズの見どころ" data-en="🎮 Series Highlights">🎮 このシリーズの見どころ</div>
+      <div class="highlight-text" data-ja="インディーゲーム「デヴィエーションゲーム」に挑戦！約47分のコンパクトな一本で、ユニークなゲームシステムをじっくり体験。GEPPOが新しいジャンルに挑戦する姿が見られる貴重な一作。続編配信にも期待が高まる注目の1本！" data-en="GEPPO takes on the indie title Deviation Game! A compact 47-minute episode with a unique game system to explore. A rare look at GEPPO venturing into new territory — a sequel would be very welcome!">
         インディーゲーム「デヴィエーションゲーム」に挑戦！
         約47分のコンパクトな一本で、ユニークなゲームシステムをじっくり体験。
         GEPPOが新しいジャンルに挑戦する姿が見られる貴重な一作。
@@ -1030,9 +1071,33 @@
 </main>
 
 <footer>
-  <p>GEPPO ／ <a href="https://www.youtube.com/@%E9%81%93%E5%AE%8F%E9%BD%8B%E8%97%A4-k8b" target="_blank">YouTubeチャンネルへ ›</a></p>
-  <p style="margin-top: 8px; font-size: 11px;">2026年4月現在</p>
+  <p>GEPPO ／ <a href="https://www.youtube.com/@%E9%81%93%E5%AE%8F%E9%BD%8B%E8%97%A4-k8b" target="_blank" data-ja="YouTubeチャンネルへ ›" data-en="Visit YouTube Channel ›">YouTubeチャンネルへ ›</a></p>
+  <p style="margin-top: 8px; font-size: 11px;" data-ja="2026年4月現在" data-en="As of April 2026">2026年4月現在</p>
 </footer>
 
+
+<script>
+  function setLang(lang) {
+    // update button states
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+    // update html lang attribute
+    document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+    // swap all data-ja / data-en elements
+    document.querySelectorAll('[data-ja]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val !== null) el.textContent = val;
+    });
+    // persist
+    localStorage.setItem('lang', lang);
+  }
+
+  // on load, restore saved language
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('lang') || 'ja';
+    if (saved !== 'ja') setLang(saved);
+  });
+</script>
 </body>
 </html>
